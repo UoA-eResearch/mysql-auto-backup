@@ -19,6 +19,10 @@ COPY        supervisord.conf /etc/supervisor/supervisord.conf
 ADD         db-backup.sh /db-backup.sh
 RUN         chmod +x /db-backup.sh
 
+# Install dependencies that are required for loading data from a Python script
+RUN         apt-get install -y python3 python3-pip libmysqlclient-dev
+RUN         pip3 install pandas mysqlclient xlrd pyyaml
+
 # Reset ENTRYPOINT because we are starting mysql with supervisord,
 # not the ENTRYPOINT and CMD from the mysql docker container
 ENTRYPOINT []
