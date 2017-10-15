@@ -1,4 +1,4 @@
-gROM        mysql:5.7
+FROM        mysql:5.7
 
 # Proxy environment variables
 ARG         http_proxy
@@ -20,8 +20,8 @@ ADD         db-backup.sh /db-backup.sh
 RUN         chmod +x /db-backup.sh
 
 # Install dependencies that are required for loading data from a Python script
-RUN         apt-get install -y python3 python3-pip libmysqlclient-dev
-RUN         pip3 install pandas mysqlclient xlrd pyyaml
+RUN         apt-get install -y python3 python3-pandas python3-pip libmysqlclient-dev
+RUN         pip3 install mysqlclient xlrd pyyaml
 
 # Install and setup supervisord
 RUN         apt-get update && apt-get install -y supervisor
