@@ -1,4 +1,9 @@
-FROM        mysql:5.7
+gROM        mysql:5.7
+
+# Proxy environment variables
+ARG         http_proxy
+ARG         https_proxy
+
 
 # Set correct timezone
 RUN 	    echo "Pacific/Auckland" > /etc/timezone
