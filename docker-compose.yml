@@ -13,7 +13,7 @@ services:
       - MYSQL_DATABASE=${DB_MYSQL_DATABASE}
       - MYSQL_ROOT_PASSWORD=${DB_MYSQL_PASSWORD}
     volumes:
-      - ../research-hub-api/src/main/resources/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+      - ./research-hub-api/src/main/resources/schema.sql:/docker-entrypoint-initdb.d/schema.sql
       - ./research-hub-db/seed_db.py:/docker-entrypoint-initdb.d/seed_db.py
       - ${DATA_DIR}/config/database.xlsx:/docker-entrypoint-initdb.d/database.xlsx
       - ./research-hub-db/seed-db.sh:/docker-entrypoint-initdb.d/seed-db.sh
