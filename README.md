@@ -3,4 +3,15 @@ This project creates a Docker image that runs MySQL and also automatically backs
 
 MySQL and Cron are run via Supervisord. Cron runs a script that dumps the MySQL database into the /data/ folder, which you can mount onto the host filesystem.
 
-To deploy the Research Hub follow the instructions on the [Research Hub Deploy project](https://github.com/UoA-eResearch/research-hub-deploy#research-hub-deployment-project).
+# Running the database container locally
+Follow steps 1 and 2 from the [Research Hub Deploy project](https://github.com/UoA-eResearch/research-hub-deploy).
+
+To build the database container:
+```bash
+./hubby compose build db
+```
+
+Run the database container:
+```bash
+./hubby compose run -p 3306:3306 db
+```
