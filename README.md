@@ -11,7 +11,7 @@ To build the database container:
 ./hubby compose build db
 ```
 
-Run the database container:
+To run the database container:
 ```bash
 ./hubby compose run -p 3306:3306 db
 ```
