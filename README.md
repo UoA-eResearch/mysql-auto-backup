@@ -1,5 +1,5 @@
 # Research Hub DB
-A docker image for the [Research Hub](https://research-hub.auckland.ac.nz/) database. This Docker image that runs MySQL, seeds and automatically backs up the database daily.
+A docker image for the [Research Hub](https://research-hub.auckland.ac.nz/) database. This Docker image runs MySQL, seeds the database and automatically backs up the database daily.
 
 MySQL and Cron are run via Supervisord. Cron runs a script that dumps the MySQL database into the /data/ folder, which you can mount onto the host filesystem.
 
