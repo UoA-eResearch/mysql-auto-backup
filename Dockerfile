@@ -6,8 +6,8 @@ ARG         https_proxy
 
 
 # Set correct timezone
-RUN 	    echo "Pacific/Auckland" > /etc/timezone
-RUN		    dpkg-reconfigure --frontend noninteractive tzdata
+RUN         echo "Pacific/Auckland" > /etc/timezone
+RUN         dpkg-reconfigure --frontend noninteractive tzdata
 
 # Install and setup cron
 RUN         apt-get update && apt-get install -y cron
@@ -27,6 +27,8 @@ RUN         pip3 install mysqlclient xlrd pyyaml
 RUN         apt-get update && apt-get install -y supervisor
 RUN         mkdir -p /var/log/supervisor
 COPY        supervisord.conf /etc/supervisor/supervisord.conf
+
+COPY        docker-compose.yml /
 
 # Reset ENTRYPOINT because we are starting mysql with supervisord,
 # not the ENTRYPOINT and CMD from the mysql docker container
