@@ -6,8 +6,8 @@ ARG         https_proxy
 
 
 # Set correct timezone
-RUN 	    echo "Pacific/Auckland" > /etc/timezone
-RUN		    dpkg-reconfigure --frontend noninteractive tzdata
+RUN         echo "Pacific/Auckland" > /etc/timezone
+RUN         dpkg-reconfigure --frontend noninteractive tzdata
 
 # Install and setup cron
 RUN         apt-get update && apt-get install -y cron
@@ -18,6 +18,10 @@ RUN         mkdir /var/log/cron
 # Copy backup script
 ADD         db-backup.sh /db-backup.sh
 RUN         chmod +x /db-backup.sh
+
+COPY        seed_db.py /docker-entrypoint-initdb.d
+COPY        seed-db.sh /docker-entrypoint-initdb.d
+RUN         chmod +x /docker-entrypoint-initdb.d/seed-db.sh
 
 # Install dependencies that are required for loading data from a Python script
 RUN         apt-get install -y python3 python3-pandas python3-pip libmysqlclient-dev
