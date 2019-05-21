@@ -24,7 +24,7 @@ COPY        seed-db.sh /docker-entrypoint-initdb.d
 RUN         chmod +x /docker-entrypoint-initdb.d/seed-db.sh
 
 # Install dependencies that are required for loading data from a Python script
-RUN         apt-get install -y python3 python3-pandas python3-pip libmysqlclient-dev
+RUN         apt-get update && apt-get install -y python3 python3-pandas python3-pip libmysqlclient-dev
 RUN         pip3 install mysqlclient xlrd pyyaml
 
 # Install and setup supervisord

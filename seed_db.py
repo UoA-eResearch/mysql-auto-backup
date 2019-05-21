@@ -78,10 +78,11 @@ if __name__ == "__main__":
 
         rows = [tuple(row) for row in rows]
 
-        # Insert data into database
+        # Insert data into database	
         with closing(get_connection(db_config)) as con:
-            with con as cursor:
+            with con.cursor() as cursor:
                 cursor.execute('SET NAMES utf8mb4')
                 cursor.execute("SET CHARACTER SET utf8mb4")
                 cursor.execute("SET character_set_connection=utf8mb4")
                 cursor.executemany(query, rows)
+            con.commit()
